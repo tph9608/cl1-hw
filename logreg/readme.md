@@ -33,7 +33,7 @@ Coding (25 points):
 Analysis (5 points):
 
 1. What is the role of the learning rate?
-2. How many passes over the data do you need to complete?
+2. How many passes over the data do you need to complete for the *model* to stabilize?  The various metrics can give you clues about what the model is doing, but no one metric is perfect.
 3. What words are the best predictors of each class?  How (mathematically) did you find them?
 4. What words are the poorest predictors of classes?  How (mathematically) did you find them?
 
@@ -43,12 +43,13 @@ Extra credit:
     - Supply an appropriate argument to step parameter
     - Support it in your _sg update_
     - Show the effect in your analysis document
-2.  Use document frequency (provided in the vocabulary file) to modify the feature values to [tf-idf](https://en.wikipedia.org/wiki/Tf%E2%80%93idf).
-    - Modify the Example to store the df vector
-    - With the appropriate flag, use the *df* vector rather than *x* in the update
+2.  Use document frequency (provided in the vocabulary file) to modify the feature values to [tf-idf](https://en.wikipedia.org/wiki/Tf%E2%80%93idf). There are many variants of tf-idf; you are welcome to implement any of them. Please specify in your analysis which variant you choose. 
+    - Modify the Example to store the ~~df~~ **tfidf** vector **in a variable named x_tfidf**
+    - With the appropriate flag, use the ~~df~~ **x_tfidf** vector rather than *x* in the update
     - Show the effect in your analysis document
-3.  Modify the _sg update_ function to perform lazy regularized updates.
-
+3.  Modify the _sg update_ function to perform [lazy regularized updates](https://lingpipe.files.wordpress.com/2008/04/lazysgdregression.pdf), which only update the weights of features when they appear in an example.
+    - Show the effect in your analysis document 
+    
 Caution: When implementing extra credit, make sure your implementation of the
 regular algorithms doesn't change.
 
@@ -57,7 +58,7 @@ What to turn in
 
 1. Submit your _logreg.py_ file (include your name at the top of the source)
 1. Submit your _analysis.pdf_ file
-    - no more than one page
+    - no more than one page (NB: This is also for the extra credit.  To minimize effort for the grader, you'll need to put everything on a page.  Take this into account when selecting if/which extra credit to do...think of the page requirement like a regularizer).
     - pictures are better than text
     - include your name at the top of the PDF
 
